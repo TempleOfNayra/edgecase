@@ -49,12 +49,16 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square relative rounded-2xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-10"></div>
-                {/* Profile photo will be added here */}
-                <div className="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">
-                  Profile Photo
-                </div>
+              <div className="aspect-square relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-100 to-slate-200">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-5"></div>
+                <Image
+                  src="/images/ali-emami.png"
+                  alt="Ali Emami - Founder of EDGECASE LLC"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
             </div>
           </div>
