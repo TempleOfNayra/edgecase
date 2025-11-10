@@ -49,10 +49,9 @@ export default function Home() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-100 to-slate-200">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-5"></div>
+              <div className="aspect-square relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/ali-emami.png"
+                  src="/images/ali-emami.jpg"
                   alt="Ali Emami - Founder of EDGECASE LLC"
                   fill
                   className="object-cover"
