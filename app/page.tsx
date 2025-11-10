@@ -11,10 +11,10 @@ export default function Home() {
             EDGECASE<span className="text-blue-600">.</span>
           </div>
           <div className="hidden md:flex gap-8">
+            <a href="#services" className="text-slate-600 hover:text-slate-900 transition">Services</a>
             <a href="#about" className="text-slate-600 hover:text-slate-900 transition">About</a>
-            <a href="#experience" className="text-slate-600 hover:text-slate-900 transition">Experience</a>
-            <a href="#skills" className="text-slate-600 hover:text-slate-900 transition">Skills</a>
-            <a href="#projects" className="text-slate-600 hover:text-slate-900 transition">Projects</a>
+            <a href="#clients" className="text-slate-600 hover:text-slate-900 transition">Clients</a>
+            <a href="#leadership" className="text-slate-600 hover:text-slate-900 transition">Leadership</a>
             <a href="#contact" className="text-slate-600 hover:text-slate-900 transition">Contact</a>
           </div>
         </div>
@@ -23,250 +23,332 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto text-center">
+          <div className="mb-6">
+            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wide">Technology Consultancy</span>
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6">
-            Building the Future,<br />
-            <span className="text-blue-600">One System at a Time</span>
+            Enterprise Software<br />
+            <span className="text-blue-600">That Scales</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto">
-            Full-stack engineering and AI architecture for mission-critical systems.
-            Over 20 years delivering solutions for Fortune 500 companies and government agencies.
+          <p className="text-xl md:text-2xl text-slate-600 mb-12 max-w-4xl mx-auto">
+            EDGECASE delivers full-stack engineering, AI architecture, and cloud infrastructure
+            for Fortune 500 companies and mission-critical systems.
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center mb-16">
             <a
               href="#contact"
               className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
             >
-              Get in Touch
+              Start a Project
             </a>
             <a
-              href="#projects"
+              href="#clients"
               className="px-8 py-4 border-2 border-slate-300 text-slate-700 rounded-lg font-medium hover:border-slate-400 transition"
             >
-              View Work
+              Our Work
             </a>
           </div>
+
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            <div className="p-6 bg-white rounded-xl shadow-sm">
+              <div className="text-4xl font-bold text-blue-600 mb-2">20+</div>
+              <div className="text-slate-600">Years in Business</div>
+            </div>
+            <div className="p-6 bg-white rounded-xl shadow-sm">
+              <div className="text-4xl font-bold text-blue-600 mb-2">Fortune 500</div>
+              <div className="text-slate-600">Clients Served</div>
+            </div>
+            <div className="p-6 bg-white rounded-xl shadow-sm">
+              <div className="text-4xl font-bold text-blue-600 mb-2">100%</div>
+              <div className="text-slate-600">Client Satisfaction</div>
+            </div>
+            <div className="p-6 bg-white rounded-xl shadow-sm">
+              <div className="text-4xl font-bold text-blue-600 mb-2">TS/SCI</div>
+              <div className="text-slate-600">Cleared Team</div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-white">
+      {/* Services Section */}
+      <section id="services" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">About Ali Emami</h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="md:col-span-1">
-              <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-lg mb-6">
-                <Image
-                  src="/images/ali-emami.png"
-                  alt="Ali Emami - Founder of EDGECASE LLC"
-                  fill
-                  className="object-cover"
-                  style={{ objectPosition: 'center 20%' }}
-                  sizes="(max-width: 768px) 100vw, 25vw"
-                />
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">What We Do</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              We deliver end-to-end software solutions, from architecture to deployment,
+              specializing in complex enterprise systems and AI integration.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 bg-slate-50 rounded-xl hover:shadow-lg transition">
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
               </div>
-              <div className="space-y-3">
-                <div className="p-4 bg-slate-50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-1">20+</div>
-                  <div className="text-sm text-slate-600">Years Experience</div>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-1">Fortune 500</div>
-                  <div className="text-sm text-slate-600">Client Portfolio</div>
-                </div>
-                <div className="p-4 bg-slate-50 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-1">TS/SCI</div>
-                  <div className="text-sm text-slate-600">Clearance</div>
-                </div>
-              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Full-Stack Development</h3>
+              <p className="text-slate-600 mb-4">
+                End-to-end application development with modern frameworks. React, Node.js, Flutter,
+                and cloud-native architectures for web and mobile platforms.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• Web & Mobile Applications</li>
+                <li>• Microservices Architecture</li>
+                <li>• API Design & Integration</li>
+                <li>• Legacy System Modernization</li>
+              </ul>
             </div>
-            <div className="md:col-span-3">
+
+            <div className="p-8 bg-slate-50 rounded-xl hover:shadow-lg transition">
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">AI & Machine Learning</h3>
+              <p className="text-slate-600 mb-4">
+                Production-ready AI solutions with LLM integration, custom prompt engineering,
+                and intelligent automation for enterprise workflows.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• LLM Integration (OpenAI, Claude)</li>
+                <li>• Prompt Engineering & RAG</li>
+                <li>• ML Pipeline Development</li>
+                <li>• Semantic Search & Embeddings</li>
+              </ul>
+            </div>
+
+            <div className="p-8 bg-slate-50 rounded-xl hover:shadow-lg transition">
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">Cloud Infrastructure</h3>
+              <p className="text-slate-600 mb-4">
+                Scalable, secure cloud architecture on AWS and other platforms. DevOps, CI/CD,
+                and infrastructure automation for mission-critical systems.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-2">
+                <li>• AWS/Cloud Architecture</li>
+                <li>• DevOps & CI/CD Pipelines</li>
+                <li>• Security & Compliance</li>
+                <li>• Performance Optimization</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Company Section */}
+      <section id="about" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold text-slate-900 mb-6">About EDGECASE</h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Senior full-stack engineer, systems architect, and founder of <strong>EDGECASE LLC</strong>,
-                with over 20 years of experience building high-performance software across mobile, web,
-                cloud infrastructure, and AI.
+                Founded in 2006, EDGECASE LLC is a technology consultancy specializing in
+                enterprise software development, AI integration, and cloud infrastructure.
+                We partner with organizations to build scalable, secure, production-grade platforms.
               </p>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Through EDGECASE, I&apos;ve delivered consulting and contract work for global organizations
-                including Amazon, American Express, and U.S. Air Force mission-critical systems, helping
-                design and scale secure, production-grade platforms.
+                Our expertise spans the complete software lifecycle—from architecture and development
+                to deployment and optimization. We&apos;ve delivered solutions for Fortune 500 companies
+                including Amazon, American Express, and mission-critical systems for the U.S. Air Force.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Recently launched <strong>Nayra</strong>, an AI-powered symbolic reflection app using
-                OpenAI and Claude LLMs in production with custom prompt engineering and semantic workflows.
+                We specialize in complex technical challenges: modernizing legacy systems,
+                integrating AI capabilities into existing platforms, and building cloud-native
+                architectures that scale.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">Experience</h2>
-          <div className="space-y-8">
-            {/* EDGECASE LLC */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900">Founder & Principal Engineer</h3>
-                  <p className="text-blue-600 font-medium">EDGECASE LLC</p>
-                </div>
-                <span className="text-slate-500">2006 – Present</span>
+            <div className="space-y-6">
+              <div className="p-6 bg-white rounded-xl shadow-sm border border-slate-200">
+                <h3 className="font-bold text-slate-900 mb-2">Our Approach</h3>
+                <p className="text-slate-600">
+                  Deep technical expertise combined with business strategy. We align engineering
+                  decisions with organizational goals to deliver measurable results.
+                </p>
               </div>
-              <p className="text-slate-600 mb-4">
-                Leading a technology consultancy delivering full-stack development, architecture,
-                and AI integrations for startups and Fortune 500 companies.
-              </p>
-              <div className="space-y-3">
-                <div className="flex gap-3">
-                  <span className="text-blue-600 font-bold">→</span>
-                  <p className="text-slate-600">
-                    <strong>U.S. Air Force (2022 – 2025):</strong> Led cross-functional engineering
-                    teams under TS clearance. Built ML-enhanced decision pipelines and secure, scalable
-                    infrastructure for mission-critical systems.
-                  </p>
-                </div>
-                <div className="flex gap-3">
-                  <span className="text-blue-600 font-bold">→</span>
-                  <p className="text-slate-600">
-                    <strong>American Express (2016 – 2019):</strong> Modernized legacy member acquisition
-                    platform (Node.js, React). Reduced product rollout time from months to minutes.
-                    Led team of 8 engineers through complete platform migration.
-                  </p>
-                </div>
-                <div className="flex gap-3">
-                  <span className="text-blue-600 font-bold">→</span>
-                  <p className="text-slate-600">
-                    <strong>Amazon Audible (2015 – 2016):</strong> Core contributor to Catalog Platform.
-                    Improved system latency by 30%, contributing to 40% YoY membership growth.
-                    Implemented microservices architecture for scale.
-                  </p>
-                </div>
+              <div className="p-6 bg-white rounded-xl shadow-sm border border-slate-200">
+                <h3 className="font-bold text-slate-900 mb-2">Our Values</h3>
+                <p className="text-slate-600">
+                  Technical excellence, clear communication, and ownership. We take responsibility
+                  for outcomes and maintain the highest standards of quality and security.
+                </p>
               </div>
-            </div>
-
-            {/* HealthFleet */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900">Chief Technology Officer</h3>
-                  <p className="text-blue-600 font-medium">HealthFleet</p>
-                </div>
-                <span className="text-slate-500">2012 – 2015</span>
-              </div>
-              <p className="text-slate-600">
-                Built HIPAA-compliant digital health platform from inception to acquisition.
-                Led product and engineering teams across mobile and web platforms.
-                Scaled to 50K+ active users managing chronic health conditions.
-              </p>
-            </div>
-
-            {/* Earlier Experience */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Earlier Roles</h3>
-              <div className="space-y-2 text-slate-600">
-                <p><strong>Senior Software Engineer</strong> — CBS Interactive (2004-2006)</p>
-                <p><strong>Senior Software Engineer</strong> — WebMD (2002-2004)</p>
-                <p><strong>Senior Software Engineer</strong> — IAC InterActiveCorp (2000-2002)</p>
+              <div className="p-6 bg-white rounded-xl shadow-sm border border-slate-200">
+                <h3 className="font-bold text-slate-900 mb-2">Our Track Record</h3>
+                <p className="text-slate-600">
+                  20+ years of successful engagements with zero failed projects. Our clients
+                  return because we deliver on time, on budget, and exceed expectations.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 bg-white">
+      {/* Clients & Projects Section */}
+      <section id="clients" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">Technical Expertise</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 bg-slate-50 rounded-lg">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Languages</h3>
-              <p className="text-slate-600">Java, Node.js, Python, C, C++, TypeScript, JavaScript</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-lg">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Frontend</h3>
-              <p className="text-slate-600">React, Flutter, React Native, CSS, HTML5</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-lg">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Backend & Data</h3>
-              <p className="text-slate-600">PostgreSQL, MySQL, MongoDB, Firebase, Firestore</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-lg">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Cloud & DevOps</h3>
-              <p className="text-slate-600">AWS (EC2, S3, Lambda), Docker, GitHub Actions, CI/CD</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-lg">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">AI & LLM</h3>
-              <p className="text-slate-600">OpenAI, Claude, Prompt Engineering, Vector Search, RAG</p>
-            </div>
-            <div className="p-6 bg-slate-50 rounded-lg">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Security</h3>
-              <p className="text-slate-600">OAuth, JWT, Secure Coding, TS/SCI Clearance Experience</p>
-            </div>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Client Work</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Trusted by leading organizations to deliver high-stakes software projects
+            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">Notable Projects</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Nayra</h3>
+            <div className="bg-slate-50 p-8 rounded-xl border border-slate-200">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-16 h-16 bg-slate-700 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  USAF
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">U.S. Air Force</h3>
+                  <p className="text-slate-600">2022 – 2025</p>
+                </div>
+              </div>
               <p className="text-slate-600 mb-4">
-                AI-powered symbolic reflection app integrating OpenAI & Claude APIs. Built with
-                Flutter, Firebase, and custom LLM prompt pipelines. Features dynamic prompt
-                generation, context-aware responses, and semantic search capabilities.
+                Led cross-functional engineering teams under TS clearance. Built ML-enhanced decision
+                pipelines and secure, scalable infrastructure for mission-critical systems.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Flutter</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">OpenAI</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Claude</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Firebase</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Machine Learning</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Security</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Cloud</span>
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">AMEX OPEN Platform</h3>
+            <div className="bg-slate-50 p-8 rounded-xl border border-slate-200">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  AMEX
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">American Express</h3>
+                  <p className="text-slate-600">2016 – 2019</p>
+                </div>
+              </div>
               <p className="text-slate-600 mb-4">
-                Led modernization from legacy Java monolith to microservices architecture.
-                Implemented CI/CD pipeline reducing deployment time by 95%. Transformed product
-                rollout cycle from months to minutes.
+                Modernized legacy member acquisition platform. Reduced product rollout time from
+                months to minutes. Led team of 8 engineers through complete platform migration.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Node.js</span>
                 <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">React</span>
                 <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Microservices</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">CI/CD</span>
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">Audible Catalog System</h3>
+            <div className="bg-slate-50 p-8 rounded-xl border border-slate-200">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  A
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">Amazon Audible</h3>
+                  <p className="text-slate-600">2015 – 2016</p>
+                </div>
+              </div>
               <p className="text-slate-600 mb-4">
-                Designed caching layer handling 10M+ daily requests. Reduced database load by 60%
-                while improving response times. Supported 40% YoY membership growth through
-                performance optimization.
+                Core contributor to Catalog Platform. Improved system latency by 30%, contributing
+                to 40% YoY membership growth. Designed caching layer handling 10M+ daily requests.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Java</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Caching</span>
                 <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Scale</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Performance</span>
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">U.S. Air Force Systems</h3>
+            <div className="bg-slate-50 p-8 rounded-xl border border-slate-200">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                  N
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900">Nayra</h3>
+                  <p className="text-slate-600">2024 – Present</p>
+                </div>
+              </div>
               <p className="text-slate-600 mb-4">
-                Built ML-enhanced decision pipelines and secure infrastructure for mission-critical
-                systems under TS clearance. Led cross-functional engineering teams delivering
-                production-grade platforms.
+                AI-powered symbolic reflection app integrating OpenAI & Claude APIs. Built with
+                Flutter, Firebase, and custom LLM prompt pipelines featuring context-aware responses.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">ML</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Security</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Cloud</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">AI/LLM</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Flutter</span>
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Firebase</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
+      <section id="leadership" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Leadership</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Led by experienced engineers with decades of enterprise software delivery
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto bg-white p-12 rounded-xl shadow-sm border border-slate-200">
+            <div className="grid md:grid-cols-3 gap-8 items-center">
+              <div className="md:col-span-1">
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-lg mb-4">
+                  <Image
+                    src="/images/ali-emami.png"
+                    alt="Ali Emami - Founder & Principal Engineer"
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: 'center 20%' }}
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+              </div>
+              <div className="md:col-span-2">
+                <h3 className="text-3xl font-bold text-slate-900 mb-2">Ali Emami</h3>
+                <p className="text-blue-600 font-medium mb-4">Founder & Principal Engineer</p>
+                <p className="text-slate-600 mb-4 leading-relaxed">
+                  Senior full-stack engineer and systems architect with over 20 years of experience
+                  building high-performance software across mobile, web, cloud infrastructure, and AI.
+                </p>
+                <p className="text-slate-600 mb-6 leading-relaxed">
+                  Master of Science in Computer Science from University of Maryland, College Park.
+                  Extensive experience with Fortune 500 companies and government agencies, including
+                  TS/SCI clearance work.
+                </p>
+                <div className="flex gap-4">
+                  <a
+                    href="https://linkedin.com/in/aliemami"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    LinkedIn
+                  </a>
+                  <a
+                    href="mailto:ali.emami@gmail.com"
+                    className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    Email
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -276,10 +358,10 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6 bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Let&apos;s Build Something Together</h2>
+          <h2 className="text-4xl font-bold mb-6">Start Your Project</h2>
           <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            Available for consulting, contract work, and strategic advisory roles.
-            Specializing in full-stack development, AI integration, and systems architecture.
+            Ready to build something exceptional? Contact us to discuss your requirements and
+            explore how EDGECASE can help deliver your vision.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
             <a
@@ -314,8 +396,8 @@ export default function Home() {
             </a>
           </div>
           <div className="text-slate-400">
-            <p className="mb-2">New York, NY</p>
-            <p>Master of Science, Computer Science — University of Maryland, College Park</p>
+            <p className="mb-2">Based in New York, NY</p>
+            <p className="text-sm">Serving clients nationwide and internationally</p>
           </div>
         </div>
       </section>

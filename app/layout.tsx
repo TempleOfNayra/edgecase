@@ -13,22 +13,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EDGECASE LLC | Ali Emami - Full-Stack Engineer & AI Architect",
-  description: "Senior full-stack engineer and founder of EDGECASE LLC with 20+ years building high-performance software for Fortune 500 companies. Specializing in AI integration, cloud architecture, and mission-critical systems for Amazon, American Express, and U.S. Air Force.",
-  keywords: ["Full-Stack Engineer", "AI Architecture", "Cloud Infrastructure", "Software Consulting", "React", "Node.js", "AWS", "Machine Learning", "OpenAI", "Claude", "Ali Emami", "EDGECASE"],
-  authors: [{ name: "Ali Emami" }],
-  creator: "Ali Emami",
+  title: "EDGECASE LLC | Enterprise Software Development & AI Solutions",
+  description: "Technology consultancy delivering full-stack engineering, AI architecture, and cloud infrastructure for Fortune 500 companies and mission-critical systems. 20+ years serving Amazon, American Express, and U.S. Air Force.",
+  keywords: ["Enterprise Software Development", "Technology Consultancy", "AI Solutions", "Cloud Infrastructure", "Software Engineering", "Full-Stack Development", "Machine Learning", "React", "Node.js", "AWS", "Microservices", "EDGECASE", "New York"],
+  authors: [{ name: "EDGECASE LLC" }],
+  creator: "EDGECASE LLC",
   openGraph: {
-    title: "EDGECASE LLC | Ali Emami - Full-Stack Engineer & AI Architect",
-    description: "20+ years delivering enterprise solutions for Fortune 500 companies and government agencies.",
+    title: "EDGECASE LLC | Enterprise Software That Scales",
+    description: "Technology consultancy delivering enterprise software solutions, AI integration, and cloud infrastructure for Fortune 500 companies.",
     url: "https://edgecase.vercel.app",
     siteName: "EDGECASE LLC",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "EDGECASE LLC | Ali Emami",
-    description: "Senior Full-Stack Engineer & AI Architect",
+    title: "EDGECASE LLC | Enterprise Software Development",
+    description: "Full-stack engineering, AI architecture, and cloud infrastructure for mission-critical systems",
   },
 };
 
