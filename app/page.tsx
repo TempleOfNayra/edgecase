@@ -51,10 +51,11 @@ export default function Home() {
             <div className="relative">
               <div className="aspect-square relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/ali-emami.jpg"
+                  src="/images/ali-emami.png"
                   alt="Ali Emami - Founder of EDGECASE LLC"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
+                  style={{ objectPosition: 'center 30%' }}
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
