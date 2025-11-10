@@ -22,45 +22,28 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
-                Building the Future,<br />
-                <span className="text-blue-600">One System at a Time</span>
-              </h1>
-              <p className="text-xl text-slate-600 mb-8">
-                Full-stack engineering and AI architecture for mission-critical systems.
-                Over 20 years delivering solutions for Fortune 500 companies and government agencies.
-              </p>
-              <div className="flex gap-4">
-                <a
-                  href="#contact"
-                  className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
-                >
-                  Get in Touch
-                </a>
-                <a
-                  href="#projects"
-                  className="px-8 py-4 border-2 border-slate-300 text-slate-700 rounded-lg font-medium hover:border-slate-400 transition"
-                >
-                  View Work
-                </a>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square relative rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/ali-emami.png"
-                  alt="Ali Emami - Founder of EDGECASE LLC"
-                  fill
-                  className="object-cover object-center"
-                  style={{ objectPosition: 'center 30%' }}
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            </div>
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-6">
+            Building the Future,<br />
+            <span className="text-blue-600">One System at a Time</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-4xl mx-auto">
+            Full-stack engineering and AI architecture for mission-critical systems.
+            Over 20 years delivering solutions for Fortune 500 companies and government agencies.
+          </p>
+          <div className="flex gap-4 justify-center">
+            <a
+              href="#contact"
+              className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
+            >
+              Get in Touch
+            </a>
+            <a
+              href="#projects"
+              className="px-8 py-4 border-2 border-slate-300 text-slate-700 rounded-lg font-medium hover:border-slate-400 transition"
+            >
+              View Work
+            </a>
           </div>
         </div>
       </section>
@@ -69,8 +52,34 @@ export default function Home() {
       <section id="about" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-slate-900 mb-12">About Ali Emami</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="md:col-span-2">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-1">
+              <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-lg mb-6">
+                <Image
+                  src="/images/ali-emami.png"
+                  alt="Ali Emami - Founder of EDGECASE LLC"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: 'center 20%' }}
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+              </div>
+              <div className="space-y-3">
+                <div className="p-4 bg-slate-50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-blue-600 mb-1">20+</div>
+                  <div className="text-sm text-slate-600">Years Experience</div>
+                </div>
+                <div className="p-4 bg-slate-50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-blue-600 mb-1">Fortune 500</div>
+                  <div className="text-sm text-slate-600">Client Portfolio</div>
+                </div>
+                <div className="p-4 bg-slate-50 rounded-lg text-center">
+                  <div className="text-2xl font-bold text-blue-600 mb-1">TS/SCI</div>
+                  <div className="text-sm text-slate-600">Clearance</div>
+                </div>
+              </div>
+            </div>
+            <div className="md:col-span-3">
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                 Senior full-stack engineer, systems architect, and founder of <strong>EDGECASE LLC</strong>,
                 with over 20 years of experience building high-performance software across mobile, web,
@@ -85,20 +94,6 @@ export default function Home() {
                 Recently launched <strong>Nayra</strong>, an AI-powered symbolic reflection app using
                 OpenAI and Claude LLMs in production with custom prompt engineering and semantic workflows.
               </p>
-            </div>
-            <div className="space-y-4">
-              <div className="p-6 bg-slate-50 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">20+</div>
-                <div className="text-slate-600">Years Experience</div>
-              </div>
-              <div className="p-6 bg-slate-50 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">Fortune 500</div>
-                <div className="text-slate-600">Client Portfolio</div>
-              </div>
-              <div className="p-6 bg-slate-50 rounded-lg">
-                <div className="text-3xl font-bold text-blue-600 mb-2">TS/SCI</div>
-                <div className="text-slate-600">Clearance Experience</div>
-              </div>
             </div>
           </div>
         </div>
