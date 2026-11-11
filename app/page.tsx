@@ -1,415 +1,527 @@
-'use client';
-
 import Image from "next/image";
-import Link from "next/link";
-import { ThemeToggle } from "./components/ThemeToggle";
+import portrait from "../public/images/ali-emami.png";
+
+const EMAIL = "ali.emami@gmail.com";
+const PHONE = { display: "(917) 257-4316", href: "tel:+19172574316" };
+const LINKEDIN = "https://www.linkedin.com/in/aliemami/";
+const NAYRA = "https://nayra.io";
+
+const nav = [
+  { href: "#practice", label: "Practice" },
+  { href: "#work", label: "Work" },
+  { href: "#record", label: "Record" },
+  { href: "#about", label: "About" },
+];
+
+const facts = [
+  { value: "3×", label: "Chief Technology Officer" },
+  { value: "20 yrs", label: "Building products, platforms and teams" },
+  { value: "45 sec", label: "Amex credit decisions, down from months" },
+  { value: "1 exit", label: "HealthFleet, acquired in 2015, as CTO" },
+];
+
+const clients = [
+  "Amazon",
+  "Audible",
+  "American Express",
+  "U.S. Air Force",
+  "ARQ",
+  "Barnes & Noble",
+  "CBS Interactive",
+  "WebMD",
+];
+
+const practice = [
+  {
+    title: "Fractional & interim CTO",
+    body: "Technology strategy, platform architecture and the engineering roadmap; budgets, hiring and team structure; the technical voice in front of the board and investors. For companies that need senior technology leadership before, between or alongside a full-time CTO.",
+    tags: ["Strategy", "Roadmap", "Budgets", "Hiring", "Board"],
+  },
+  {
+    title: "Architecture & modernization",
+    body: "Breaking up monoliths without stopping the business: service boundaries, API contracts, phased migration, and the CI/CD and testing standards that let teams ship continuously and run their services on their own.",
+    tags: ["Distributed systems", "APIs", "Migration", "CI/CD"],
+  },
+  {
+    title: "AI, data & machine learning",
+    body: "Turning research and models into products people rely on: data pipelines, ML and LLM integration, and the validation frameworks that keep predictions honest once they reach production.",
+    tags: ["ML platforms", "LLMs", "Data pipelines", "Validation"],
+  },
+  {
+    title: "Zero to one",
+    body: "From first prototype to a production platform on web and mobile, together with the team and the delivery process that carry it forward. Health tech, fintech, media and government.",
+    tags: ["MVPs", "Web & mobile", "Cloud-native", "Team building"],
+  },
+];
+
+const work = [
+  {
+    org: "ARQ",
+    years: "2026 – now",
+    role: "Head of Technology",
+    headline:
+      "Turning AI, machine learning and biology into predictive health technology.",
+    points: [
+      "Technology vision, platform architecture and engineering roadmap through 2027.",
+      "Strategy for combining continuous physiological data, proteomics and machine learning into personalized health insights.",
+      "Leads engineering across product, platform infrastructure, data systems and ML.",
+    ],
+  },
+  {
+    org: "U.S. Air Force",
+    years: "2022 – 2026",
+    role: "Lead Technology Architect",
+    headline: "Architecture and technical direction for mission-critical systems.",
+    points: [
+      "Set the system architecture and technical direction for the program.",
+      "Led engineering delivery from design through production.",
+    ],
+  },
+  {
+    org: "American Express",
+    years: "2015 – 2022",
+    role: "Technologist, then Senior Technical Team Lead",
+    headline: "Credit decisions cut from months to about 45 seconds.",
+    points: [
+      "Led the modernization of the Platinum Card and OPEN acquisition platforms, from JSP monoliths to React and Node.js services.",
+      "Replaced six-week product rollouts with configuration-driven releases by separating business rules from deployments.",
+      "Set the CI/CD, testing and delivery standards that let teams deploy continuously.",
+    ],
+  },
+  {
+    org: "Audible · Amazon",
+    years: "2014 – 2018",
+    role: "Technology Consultant, then Senior Consultant",
+    headline: "In-app purchase and download, after the Amazon acquisition.",
+    points: [
+      "Architected the integration of payments and content delivery into the Audible app.",
+      "Built catalog services serving millions of listeners on web and mobile.",
+      "Scaled the catalog platform through 40% year-over-year membership growth.",
+    ],
+  },
+  {
+    org: "HealthFleet",
+    years: "2012 – 2015",
+    role: "Chief Technology Officer",
+    headline: "A digital health platform, from first build to acquisition.",
+    points: [
+      "Owned the architecture and roadmap for HIPAA-compliant chronic-care infrastructure.",
+      "Built the engineering team and the standards it worked by.",
+      "Designed patient data pipelines under healthcare regulation.",
+    ],
+  },
+];
+
+const record = [
+  { years: "2026 – now", org: "ARQ", role: "Head of Technology" },
+  { years: "2015 – now", org: "Edgecase", role: "Founder & CTO" },
+  { years: "2022 – 2026", org: "U.S. Air Force", role: "Lead Technology Architect" },
+  { years: "2015 – 2022", org: "American Express", role: "Technologist; Senior Technical Team Lead" },
+  { years: "2014 – 2018", org: "Amazon · Audible", role: "Technology Consultant; Senior Consultant" },
+  { years: "2012 – 2015", org: "HealthFleet", role: "Chief Technology Officer · acquired 2015" },
+  { years: "2008 – 2014", org: "babulous", role: "Founder & CTO" },
+  { years: "2010", org: "Barnes & Noble", role: "Technology Consultant · built PubIt" },
+  { years: "2006 – 2007", org: "CBS Interactive", role: "Senior Architect, Director of Technology" },
+  { years: "2004 – 2006", org: "WebMD", role: "Senior Software Engineer" },
+  { years: "2004 – 2005", org: "Ask.com", role: "Senior Software Engineer" },
+];
+
+// Dividers for the facts grid: 2×2 on phones, one row of four from md up.
+const factCell = [
+  "",
+  "border-l pl-5 md:pl-6",
+  "border-t md:border-t-0 md:border-l md:pl-6",
+  "border-t border-l pl-5 md:border-t-0 md:pl-6",
+];
+
+const container = "mx-auto w-full max-w-[1200px] px-6 md:px-10";
+const eyebrow = "font-mono text-[11px] uppercase tracking-[0.2em]";
+const textLink =
+  "underline decoration-rule decoration-1 underline-offset-[6px] transition-colors hover:decoration-accent";
+
+function Mark({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" aria-hidden="true" className={className}>
+      <path d="M2.5 18V2.5H18" fill="none" stroke="currentColor" strokeWidth="2.5" />
+      <rect x="11" y="11" width="7" height="7" fill="var(--accent)" />
+    </svg>
+  );
+}
+
+function Arrow({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true" className={className}>
+      <path d="M4 12 12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
+function SectionHead({
+  index,
+  label,
+  title,
+  intro,
+}: {
+  index: string;
+  label: string;
+  title: React.ReactNode;
+  intro?: string;
+}) {
+  return (
+    <div className="mb-14 grid gap-6 md:mb-20 md:grid-cols-12 md:gap-10">
+      <p className={`${eyebrow} text-muted md:col-span-3 md:pt-4`}>
+        <span className="text-accent">{index}</span>
+        <span className="mx-2">/</span>
+        {label}
+      </p>
+      <div className="md:col-span-9">
+        <h2 className="font-serif text-[2.6rem] leading-[1.02] tracking-[-0.01em] text-balance md:text-6xl">
+          {title}
+        </h2>
+        {intro && (
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted">
+            {intro}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 z-50">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold text-slate-900 dark:text-white">
-            EDGECASE<span className="text-blue-600 dark:text-blue-400">.</span>
-          </div>
-          <div className="hidden md:flex gap-8 items-center">
-            <a href="#services" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Services</a>
-            <a href="#about" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">About</a>
-            <a href="#clients" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Clients</a>
-            <a href="#leadership" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Leadership</a>
-            <a href="#contact" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition">Contact</a>
-            <ThemeToggle />
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-6">
-            <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-wide">Technology Consultancy</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6">
-            Enterprise Software<br />
-            <span className="text-blue-600">That Scales</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-4xl mx-auto">
-            EDGECASE delivers full-stack engineering, AI architecture, and cloud infrastructure
-            for Fortune 500 companies and mission-critical systems.
-          </p>
-          <div className="flex gap-4 justify-center mb-16">
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-rule bg-paper/85 backdrop-blur-md">
+        <div className={`${container} flex h-16 items-center justify-between`}>
+          <a href="#top" className="flex items-center gap-2.5" aria-label="Edgecase, back to top">
+            <Mark className="h-[18px] w-[18px]" />
+            <span className="font-serif text-[1.65rem] leading-none tracking-[-0.01em]">
+              Edgecase
+            </span>
+          </a>
+          <nav className="flex items-center gap-8" aria-label="Main">
+            <ul className="hidden items-center gap-8 md:flex">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="text-sm text-muted transition-colors hover:text-ink"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
             <a
               href="#contact"
-              className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition"
+              className="rounded-full border border-ink px-4 py-1.5 text-sm transition-colors hover:bg-ink hover:text-paper"
             >
-              Start a Project
+              Contact
             </a>
-            <a
-              href="#clients"
-              className="px-8 py-4 border-2 border-slate-300 text-slate-700 dark:text-slate-200 rounded-lg font-medium hover:border-slate-400 transition"
-            >
-              Our Work
-            </a>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-blue-600 mb-2">20+</div>
-              <div className="text-slate-600 dark:text-slate-300">Years in Business</div>
-            </div>
-            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-blue-600 mb-2">Fortune 500</div>
-              <div className="text-slate-600 dark:text-slate-300">Clients Served</div>
-            </div>
-            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-blue-600 mb-2">100%</div>
-              <div className="text-slate-600 dark:text-slate-300">Client Satisfaction</div>
-            </div>
-            <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
-              <div className="text-4xl font-bold text-blue-600 mb-2">TS/SCI</div>
-              <div className="text-slate-600 dark:text-slate-300">Cleared Team</div>
-            </div>
-          </div>
+          </nav>
         </div>
-      </section>
+      </header>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 px-6 bg-white dark:bg-slate-800">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">What We Do</h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              We deliver end-to-end software solutions, from architecture to deployment,
-              specializing in complex enterprise systems and AI integration.
+      <main id="top">
+        {/* Hero */}
+        <section className="pt-36 pb-20 md:pt-48 md:pb-28">
+          <div className={container}>
+            <p className={`${eyebrow} flex flex-wrap gap-x-2 gap-y-1 text-muted`}>
+              <span className="whitespace-nowrap">Technology leadership ·</span>
+              <span className="whitespace-nowrap">Architecture ·</span>
+              <span className="whitespace-nowrap">Engineering</span>
             </p>
-          </div>
+            <h1 className="mt-8 max-w-[19ch] font-serif text-[clamp(2.9rem,7.6vw,6.9rem)] leading-[0.95] tracking-[-0.02em] text-pretty">
+              Technology that shapes what a company{" "}
+              <em className="text-accent">becomes</em>, not only what it builds.
+            </h1>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 bg-slate-50 dark:bg-slate-800 rounded-xl hover:shadow-lg transition">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Full-Stack Development</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                End-to-end application development with modern frameworks. React, Node.js, Flutter,
-                and cloud-native architectures for web and mobile platforms.
+            <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:items-end">
+              <p className="max-w-xl text-lg leading-relaxed text-pretty text-muted md:col-span-7 md:text-xl">
+                Edgecase is the technology practice of{" "}
+                <span className="text-ink">Ali Emami</span>: three-time CTO, systems
+                architect and engineering leader, with twenty years across Amazon,
+                Audible, American Express and the U.S. Air Force.
               </p>
-              <ul className="text-sm text-slate-600 space-y-2">
-                <li>• Web & Mobile Applications</li>
-                <li>• Microservices Architecture</li>
-                <li>• API Design & Integration</li>
-                <li>• Legacy System Modernization</li>
-              </ul>
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-4 md:col-span-5 md:justify-end">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="rounded-full bg-ink px-6 py-3 text-[15px] text-paper transition-opacity hover:opacity-85"
+                >
+                  Start a conversation
+                </a>
+                <a href="#work" className={`text-[15px] ${textLink}`}>
+                  See the work
+                </a>
+              </div>
             </div>
 
-            <div className="p-8 bg-slate-50 dark:bg-slate-800 rounded-xl hover:shadow-lg transition">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">AI & Machine Learning</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                Production-ready AI solutions with LLM integration, custom prompt engineering,
-                and intelligent automation for enterprise workflows.
-              </p>
-              <ul className="text-sm text-slate-600 space-y-2">
-                <li>• LLM Integration (OpenAI, Claude)</li>
-                <li>• Prompt Engineering & RAG</li>
-                <li>• ML Pipeline Development</li>
-                <li>• Semantic Search & Embeddings</li>
-              </ul>
-            </div>
+            <dl className="mt-20 grid grid-cols-2 border-y border-rule md:mt-28 md:grid-cols-4">
+              {facts.map((fact, i) => (
+                <div
+                  key={fact.label}
+                  className={`border-rule py-7 pr-4 md:py-9 md:pr-6 ${factCell[i]}`}
+                >
+                  <dt className="sr-only">{fact.label}</dt>
+                  <dd className="font-serif text-[2.6rem] leading-none tracking-[-0.01em] md:text-5xl">
+                    {fact.value}
+                  </dd>
+                  <dd className="mt-3 text-sm leading-snug text-muted">{fact.label}</dd>
+                </div>
+              ))}
+            </dl>
 
-            <div className="p-8 bg-slate-50 dark:bg-slate-800 rounded-xl hover:shadow-lg transition">
-              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Cloud Infrastructure</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                Scalable, secure cloud architecture on AWS and other platforms. DevOps, CI/CD,
-                and infrastructure automation for mission-critical systems.
+            <div className="mt-12 grid gap-5 md:grid-cols-12 md:gap-10">
+              <p className={`${eyebrow} text-muted md:col-span-3 md:pt-2.5`}>
+                Selected clients &amp; employers
               </p>
-              <ul className="text-sm text-slate-600 space-y-2">
-                <li>• AWS/Cloud Architecture</li>
-                <li>• DevOps & CI/CD Pipelines</li>
-                <li>• Security & Compliance</li>
-                <li>• Performance Optimization</li>
+              <ul className="flex flex-wrap gap-x-7 gap-y-2 font-serif text-2xl text-ink/75 md:col-span-9 md:text-[1.75rem]">
+                {clients.map((client) => (
+                  <li key={client}>{client}</li>
+                ))}
               </ul>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About Company Section */}
-      <section id="about" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Practice */}
+        <section id="practice" className="border-t border-rule py-24 md:py-32">
+          <div className={container}>
+            <SectionHead
+              index="01"
+              label="Practice"
+              title="Senior technology leadership, without the bench."
+              intro="Every engagement is led personally by Ali, with no hand-off to a team of juniors. Most take one of four shapes."
+            />
+            <ol className="grid gap-x-16 md:grid-cols-2">
+              {practice.map((item, i) => (
+                <li key={item.title} className="border-t border-rule pt-8 pb-12 md:pb-16">
+                  <p className="font-mono text-xs text-accent">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-4 font-serif text-3xl leading-tight md:text-[2.1rem]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 max-w-lg leading-relaxed text-pretty text-muted">
+                    {item.body}
+                  </p>
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="rounded-full border border-rule px-3 py-1 font-mono text-[11px] text-muted"
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Selected work */}
+        <section id="work" className="border-t border-rule bg-surface py-24 md:py-32">
+          <div className={container}>
+            <SectionHead
+              index="02"
+              label="Selected work"
+              title="Hard systems, shipped, at companies where they mattered."
+            />
             <div>
-              <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-6">About EDGECASE</h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                Founded in 2006, EDGECASE LLC is a technology consultancy specializing in
-                enterprise software development, AI integration, and cloud infrastructure.
-                We partner with organizations to build scalable, secure, production-grade platforms.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                Our expertise spans the complete software lifecycle—from architecture and development
-                to deployment and optimization. We&apos;ve delivered solutions for Fortune 500 companies
-                including Amazon, American Express, and mission-critical systems for the U.S. Air Force.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                We specialize in complex technical challenges: modernizing legacy systems,
-                integrating AI capabilities into existing platforms, and building cloud-native
-                architectures that scale.
-              </p>
-            </div>
-            <div className="space-y-6">
-              <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-                <h3 className="font-bold text-slate-900 dark:text-white mb-2">Our Approach</h3>
-                <p className="text-slate-600 dark:text-slate-300">
-                  Deep technical expertise combined with business strategy. We align engineering
-                  decisions with organizational goals to deliver measurable results.
-                </p>
-              </div>
-              <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-                <h3 className="font-bold text-slate-900 dark:text-white mb-2">Our Values</h3>
-                <p className="text-slate-600 dark:text-slate-300">
-                  Technical excellence, clear communication, and ownership. We take responsibility
-                  for outcomes and maintain the highest standards of quality and security.
-                </p>
-              </div>
-              <div className="p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-                <h3 className="font-bold text-slate-900 dark:text-white mb-2">Our Track Record</h3>
-                <p className="text-slate-600 dark:text-slate-300">
-                  20+ years of successful engagements with zero failed projects. Our clients
-                  return because we deliver on time, on budget, and exceed expectations.
-                </p>
-              </div>
+              {work.map((item) => (
+                <article
+                  key={item.org}
+                  className="grid gap-6 border-t border-rule py-10 md:grid-cols-12 md:gap-10 md:py-14"
+                >
+                  <div className="md:col-span-3">
+                    <h3 className="font-serif text-2xl leading-tight md:text-[1.7rem]">
+                      {item.org}
+                    </h3>
+                    <p className="mt-2 font-mono text-xs text-muted">{item.years}</p>
+                    <p className="mt-1 text-sm text-muted">{item.role}</p>
+                  </div>
+                  <p className="font-serif text-[1.9rem] leading-[1.1] tracking-[-0.005em] text-balance md:col-span-5 md:text-[2.35rem]">
+                    {item.headline}
+                  </p>
+                  <ul className="space-y-3 text-[15px] leading-relaxed text-muted md:col-span-4 md:pt-2">
+                    {item.points.map((point) => (
+                      <li key={point} className="flex gap-3">
+                        <span aria-hidden="true" className="mt-[0.7em] h-px w-3 shrink-0 bg-accent" />
+                        <span className="text-pretty">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Clients & Projects Section */}
-      <section id="clients" className="py-20 px-6 bg-white dark:bg-slate-800">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Client Work</h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Trusted by leading organizations to deliver high-stakes software projects
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-slate-700 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  USAF
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">U.S. Air Force</h3>
-                  <p className="text-slate-600 dark:text-slate-300">2022 – 2025</p>
-                </div>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                Led cross-functional engineering teams under TS clearance. Built ML-enhanced decision
-                pipelines and secure, scalable infrastructure for mission-critical systems.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Machine Learning</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Security</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Cloud</span>
-              </div>
-            </div>
-
-            <div className="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  AMEX
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">American Express</h3>
-                  <p className="text-slate-600 dark:text-slate-300">2016 – 2019</p>
-                </div>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                Modernized legacy member acquisition platform. Reduced product rollout time from
-                months to minutes. Led team of 8 engineers through complete platform migration.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Node.js</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">React</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Microservices</span>
-              </div>
-            </div>
-
-            <div className="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  A
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Amazon Audible</h3>
-                  <p className="text-slate-600 dark:text-slate-300">2015 – 2016</p>
-                </div>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                Core contributor to Catalog Platform. Improved system latency by 30%, contributing
-                to 40% YoY membership growth. Designed caching layer handling 10M+ daily requests.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Java</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Scale</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Performance</span>
-              </div>
-            </div>
-
-            <div className="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl border border-slate-200 dark:border-slate-700">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                  N
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Nayra</h3>
-                  <p className="text-slate-600 dark:text-slate-300">2024 – Present</p>
-                </div>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">
-                AI-powered symbolic reflection app integrating OpenAI & Claude APIs. Built with
-                Flutter, Firebase, and custom LLM prompt pipelines featuring context-aware responses.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">AI/LLM</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Flutter</span>
-                <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Firebase</span>
-              </div>
+        {/* Record */}
+        <section id="record" className="border-t border-rule py-24 md:py-32">
+          <div className={container}>
+            <SectionHead index="03" label="Record" title="Twenty years, in order." />
+            <ol className="border-b border-rule">
+              {record.map((row) => (
+                <li
+                  key={`${row.org}-${row.years}`}
+                  className="grid grid-cols-[6.5rem_1fr] gap-x-4 gap-y-1 border-t border-rule py-5 md:grid-cols-12 md:gap-10"
+                >
+                  <span className="pt-1 font-mono text-xs text-muted md:col-span-3">
+                    {row.years}
+                  </span>
+                  <span className="font-serif text-xl leading-snug md:col-span-4 md:text-2xl">
+                    {row.org}
+                  </span>
+                  <span className="col-start-2 text-sm leading-snug text-muted md:col-span-5 md:col-start-auto md:pt-1.5 md:text-[15px]">
+                    {row.role}
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <div className="mt-10 grid grid-cols-[6.5rem_1fr] gap-x-4 gap-y-1 md:grid-cols-12 md:gap-10">
+              <span className="pt-1 font-mono text-xs text-muted md:col-span-3">Education</span>
+              <span className="font-serif text-xl leading-snug md:col-span-4 md:text-2xl">
+                University of Maryland
+              </span>
+              <span className="col-start-2 text-sm leading-snug text-muted md:col-span-5 md:col-start-auto md:pt-1.5 md:text-[15px]">
+                M.S., Computer Science · College Park
+              </span>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Leadership Section */}
-      <section id="leadership" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">Leadership</h2>
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Led by experienced engineers with decades of enterprise software delivery
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto bg-white dark:bg-slate-800 p-12 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
-            <div className="grid md:grid-cols-3 gap-8 items-center">
-              <div className="md:col-span-1">
-                <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-lg mb-4">
+        {/* About */}
+        <section id="about" className="border-t border-rule py-24 md:py-32">
+          <div className={container}>
+            <SectionHead index="04" label="About" title="Ali Emami" />
+            <div className="grid gap-12 md:grid-cols-12 md:gap-10">
+              <figure className="md:col-span-5">
+                <div className="relative aspect-[4/5] overflow-hidden bg-surface">
                   <Image
-                    src="/images/ali-emami.png"
-                    alt="Ali Emami - Founder & Principal Engineer"
+                    src={portrait}
+                    alt="Portrait of Ali Emami"
                     fill
-                    className="object-cover"
-                    style={{ objectPosition: 'center 20%' }}
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    placeholder="blur"
+                    sizes="(min-width: 1200px) 460px, (min-width: 768px) 40vw, 100vw"
+                    className="object-cover grayscale"
+                    style={{ objectPosition: "50% 30%" }}
                   />
                 </div>
-              </div>
-              <div className="md:col-span-2">
-                <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">Ali Emami</h3>
-                <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">Founder & Principal Engineer</p>
-                <p className="text-slate-600 dark:text-slate-300 mb-4 leading-relaxed">
-                  Senior full-stack engineer and systems architect with over 20 years of experience
-                  building high-performance software across mobile, web, cloud infrastructure, and AI.
+                <figcaption className={`${eyebrow} mt-4 text-muted`}>
+                  Founder &amp; principal, New York
+                </figcaption>
+              </figure>
+
+              <div className="md:col-span-7 md:pl-6">
+                <p className="font-serif text-[1.9rem] leading-[1.2] text-balance md:text-[2.3rem]">
+                  Twenty years of turning complex, ambiguous problems into products,
+                  scalable systems and the teams that run them.
                 </p>
-                <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                  Master of Science in Computer Science from University of Maryland, College Park.
-                  Extensive experience with Fortune 500 companies and government agencies, including
-                  TS/SCI clearance work.
-                </p>
-                <div className="flex gap-4">
-                  <a
-                    href="https://linkedin.com/in/aliemami"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                    LinkedIn
-                  </a>
-                  <a
-                    href="mailto:ali.emami@gmail.com"
-                    className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition"
-                  >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                    </svg>
-                    Email
-                  </a>
+                <div className="mt-8 space-y-5 text-[17px] leading-relaxed text-pretty text-muted">
+                  <p>
+                    Ali has been CTO three times: of HealthFleet, a digital health
+                    platform acquired in 2015; of babulous; and of Edgecase, which he
+                    founded the same year to bring CTO-level strategy and hands-on
+                    architecture to startups and enterprises. Along the way he led
+                    engineering teams at American Express, built for Audible and Amazon,
+                    and served as lead technology architect for the U.S. Air Force.
+                  </p>
+                  <p>
+                    He does his best work where technology is central to the strategy,
+                    where engineering helps decide what is possible rather than only
+                    delivering what is requested. Today that means leading technology at
+                    ARQ, where AI, machine learning and biological research come together
+                    to understand and predict human health.
+                  </p>
+                  <p>
+                    Outside client work he builds{" "}
+                    <a href={NAYRA} className={`text-ink ${textLink}`}>
+                      Nayra
+                    </a>
+                    , an AI reflection app for iPhone.
+                  </p>
                 </div>
+
+                <dl className="mt-12 grid gap-8 border-t border-rule pt-8 sm:grid-cols-2">
+                  <div>
+                    <dt className={`${eyebrow} text-muted`}>Focus</dt>
+                    <dd className="mt-3 leading-relaxed">
+                      Technical leadership, software architecture, distributed systems,
+                      cloud-native platforms, machine learning
+                    </dd>
+                  </div>
+                  <div>
+                    <dt className={`${eyebrow} text-muted`}>Education</dt>
+                    <dd className="mt-3 leading-relaxed">
+                      M.S., Computer Science
+                      <br />
+                      University of Maryland, College Park
+                    </dd>
+                  </div>
+                </dl>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-slate-900 dark:bg-slate-950 text-white">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Start Your Project</h2>
-          <p className="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
-            Ready to build something exceptional? Contact us to discuss your requirements and
-            explore how EDGECASE can help deliver your vision.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-            <a
-              href="mailto:ali.emami@gmail.com"
-              className="flex items-center gap-3 text-lg hover:text-blue-400 transition"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
-              ali.emami@gmail.com
-            </a>
-            <a
-              href="tel:+19172574316"
-              className="flex items-center gap-3 text-lg hover:text-blue-400 transition"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-              </svg>
-              (917) 257-4316
-            </a>
-            <a
-              href="https://linkedin.com/in/aliemami"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 text-lg hover:text-blue-400 transition"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-              LinkedIn
-            </a>
-          </div>
-          <div className="text-slate-400">
-            <p className="mb-2">Based in New York, NY</p>
-            <p className="text-sm">Serving clients nationwide and internationally</p>
-          </div>
-        </div>
-      </section>
+        {/* Contact */}
+        <section id="contact" className="bg-ink text-paper">
+          <div className={`${container} pt-24 pb-12 md:pt-36`}>
+            <p className={`${eyebrow} text-paper/60`}>
+              05<span className="mx-2">/</span>Contact
+            </p>
+            <h2 className="mt-8 font-serif text-[clamp(2.9rem,8vw,7rem)] leading-[0.95] tracking-[-0.02em]">
+              Have a hard problem?
+              <br />
+              <em>Let&rsquo;s talk.</em>
+            </h2>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 bg-slate-950 text-slate-400 text-center">
-        <p>&copy; {new Date().getFullYear()} EDGECASE LLC. All rights reserved.</p>
-      </footer>
-    </div>
+            <div className="mt-16 grid gap-10 border-t border-paper/15 pt-10 md:mt-24 md:grid-cols-12">
+              <div className="md:col-span-6">
+                <p className={`${eyebrow} text-paper/60`}>Email</p>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="mt-3 inline-block font-serif text-[1.75rem] break-all underline decoration-paper/30 decoration-1 underline-offset-[6px] transition-colors hover:decoration-paper sm:text-4xl"
+                >
+                  {EMAIL}
+                </a>
+              </div>
+              <div className="md:col-span-3">
+                <p className={`${eyebrow} text-paper/60`}>Phone</p>
+                <a
+                  href={PHONE.href}
+                  className="mt-3 inline-block text-lg underline decoration-paper/30 decoration-1 underline-offset-[6px] transition-colors hover:decoration-paper"
+                >
+                  {PHONE.display}
+                </a>
+              </div>
+              <div className="md:col-span-3">
+                <p className={`${eyebrow} text-paper/60`}>Elsewhere</p>
+                <a
+                  href={LINKEDIN}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-1.5 text-lg underline decoration-paper/30 decoration-1 underline-offset-[6px] transition-colors hover:decoration-paper"
+                >
+                  LinkedIn
+                  <Arrow className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </div>
+
+            <footer className="mt-24 flex flex-col gap-3 border-t border-paper/15 pt-8 text-sm text-paper/60 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex items-center gap-2.5">
+                <Mark className="h-3.5 w-3.5" />
+                <span>&copy; {new Date().getFullYear()} EDGECASE LLC</span>
+              </div>
+              <span>New York, NY</span>
+            </footer>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
